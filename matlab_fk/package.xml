@@ -1,0 +1,11 @@
+<?xml version="1.0"?>
+<package>
+  <name>matlab_fk</name>
+  <version>0.0.0</version>
+  <description>Very fast server to compute FK from Matlab</description>
+  <maintainer email="yoan@todo.todo">yoan</maintainer>
+  <license>TODO</license>
+  <buildtool_depend>catkin</buildtool_depend>
+  <export>
+  </export>
+</package>

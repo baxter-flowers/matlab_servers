@@ -29,6 +29,7 @@ while not rospy.is_shutdown():
     commander.move_to_controlled(dicttostate(joint_values), display_only=simulation)
     current_angles = statetodict(commander.get_current_state())
     rospy.loginfo('Target reached! Sending back current angles {}'.format(str(current_angles)))
+    bridge.send(current_angles)
 
 
 

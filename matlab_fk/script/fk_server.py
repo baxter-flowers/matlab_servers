@@ -2,17 +2,17 @@
 # -*- coding: utf-8 -*-
 
 import rospy
-import matlab_bridge
+from matlab_bridge.python_interface import PythonInterface
 import baxter_pykdl
 
 rospy.init_node('matlab_fk_server')
 side = 'left'
 
 kinematics = baxter_pykdl.baxter_kinematics(side)
-bridge = matlab_bridge.PythonInterface(matlab_flag='FKflagMatlab.txt',
-                                       python_flag='FKflagPython.txt',
-                                       matlab_file='FKjoints.json',
-                                       python_file='FKxyz.json')
+bridge = PythonInterface(matlab_flag='FKflagMatlab.txt',
+                         python_flag='FKflagPython.txt',
+                         matlab_file='FKjoints.json',
+                         python_file='FKxyz.json')
 joints = map(lambda joint: 'side_'+joint, ['s0', 's1', 'e0', 'e1', 'w0', 'w1', 'w2'])
 
 rospy.loginfo("FK server ready to handle FK for {}_arm".format(side))

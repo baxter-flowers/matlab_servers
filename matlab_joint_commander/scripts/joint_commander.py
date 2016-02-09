@@ -26,10 +26,11 @@ while not rospy.is_shutdown():
     joint_values = bridge.read()
     rospy.loginfo("{}_arm command received: ".format(side) + str(joint_values))
     target = {'name': joints, 'position': list(joint_values)}
-    commander.move_to_controlled(dicttostate(joint_values), display_only=simulation)
-    current_angles = statetodict(commander.get_current_state())
-    rospy.loginfo('Target reached! Sending back current angles {}'.format(str(current_angles)))
-    bridge.send(current_angles)
+    commander.move_to_controlled(dicttostate(target), display_only=simulation)
+    #current_angles = statetodict(commander.get_current_state())
+    #rospy.loginfo('Target reached! Sending back current angles {}'.format(str(current_angles)))
+    endpoint = list(commander.endpoint_pose()[0])
+    bridge.send(endpoint)
 
 
 

@@ -11,10 +11,6 @@ side = 'left'
 simulation = True
 
 bridge = PythonInterface()
-bridge.matlab_flag='/tmp/matlab_bridge/flagMatlabFinished.txt'
-bridge.python_flag='/tmp/matlab_bridge/flagPythonFinished.txt'
-bridge.matlab_file='/tmp/matlab_bridge/matlab_file.json'
-bridge.python_file='/tmp/matlab_bridge/python_file.json'
 joints = map(lambda joint: side+'_'+joint, ['s0', 's1', 'e0', 'e1', 'w0', 'w1', 'w2'])
 
 rospy.loginfo("Starting the commander... Don't forget to roslaunch baxter_commander commander.launch if it does not end")

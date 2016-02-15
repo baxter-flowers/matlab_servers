@@ -3,22 +3,16 @@
 from natnet import NatNetClient
 from matlab_bridge.python_interface import PythonInterface
 from tools import inverse_transform, multiply_transform
-from tempfile import gettempdir
 from os.path import join
 
 # Setting up the connection with Matlab
 bridge = PythonInterface()
-bridge.matlab_flag = join(gettempdir(), 'flagMatlabFinished.txt')
-bridge.python_flag = join(gettempdir(), 'flagPythonFinished.txt')
-bridge.matlab_file = join(gettempdir(), 'matlab_file.json')
-bridge.python_file = join(gettempdir(), 'python_file.json')
 
 # Setting up the connection with Optitrack
 client = NatNetClient()
 client.receive_frame().unpack_data()['markersets'] # Just check once that we receive data from optitrack/NatNet
 
 print("[Matlab-Optitrack] server ready to handle requests")
-print("Temp dir is {}".format(gettempdir()))
 
 # Objects to serve pose of
 eef_id, world_id = 3, 4  # ID of rigid bodies (check in Motive > Rigid Body properties)
